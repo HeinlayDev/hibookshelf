@@ -17,10 +17,10 @@ app.use(cors({ origin: true, credentials: true }));
 
 // Init Middleware
 app.use(express.json({ extended: false }));
-// app.use(express.static(path.join(__dirname, "client", "build")))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 
-app.get('/', (req, res) => res.send('Hello world!'));
+// app.get('/', (req, res) => res.send('Hello world!'));
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
