@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const path = require('path');
 var cors = require('cors');
 
 // routes
@@ -17,6 +18,14 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello world!'));
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+         res.sendFile(path.resolve(__dirname, 'client','build','index.html'));
+    });
+} 
 
 // use Routes
 app.use('/api/books', books);
