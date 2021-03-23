@@ -7,11 +7,12 @@
     "start": "node app.js",
     "build": "cd client && npm run build",
     "install-client": "cd hibookshelf && npm install",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install hibookshelf_client && npm run build hibookshelf_client",
     "app": "nodemon app.js",
     "client": "cd client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "proxy" : "http://localhost:8082",
   "repository": {
     "type": "git"
   },
@@ -22,7 +23,6 @@
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.1",
     "validation": "0.0.1"
