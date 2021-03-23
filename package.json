@@ -7,7 +7,7 @@
     "start": "node app.js",
     "build": "cd client && npm run build",
     "install-client": "cd hibookshelf && npm install",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install hibookshelf_client && npm run build hibookshelf_client",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "app": "nodemon app.js",
     "client": "cd client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
